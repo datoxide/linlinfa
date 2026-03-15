@@ -21,6 +21,32 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# ==================== API Key 检查 ====================
+from config import Config
+
+def check_api_key():
+    """检查 API Key 是否已配置"""
+    api_key = Config.OPENROUTER_API_KEY
+    if not api_key:
+        st.error("⚠️ 请配置 OPENROUTER_API_KEY")
+        st.markdown("""
+        **配置方法 (二选一)：**
+
+        1. **Streamlit Cloud**: 在 Streamlit 应用的 Settings → Secrets 中添加：
+           ```toml
+           OPENROUTER_API_KEY = "your-api-key-here"
+           ```
+
+        2. **本地运行**: 创建 `.env` 文件：
+           ```bash
+           OPENROUTER_API_KEY=your-api-key-here
+           ```
+        """)
+        st.stop()
+
+# 在页面加载时检查 API Key
+check_api_key()
+
 
 # ==================== 自定义样式 ====================
 def apply_custom_styles():
