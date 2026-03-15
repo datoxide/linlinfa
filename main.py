@@ -49,13 +49,13 @@ class LegalAgent:
 
     def run(self):
         """运行交互式对话"""
-        print("法律传播智能体已启动，输入 'quit' 退出")
+        print("Legal Agent started, type 'quit' to exit")
         print("-" * 40)
 
         while True:
-            user_input = input("\n你: ").strip()
+            user_input = input("\nYou: ").strip()
             if user_input.lower() in ["quit", "exit", "q"]:
-                print("再见！")
+                print("Goodbye!")
                 break
 
             if not user_input:
@@ -63,9 +63,9 @@ class LegalAgent:
 
             try:
                 response = self.chat(user_input)
-                print(f"\n智能体: {response}")
+                print(f"\nAgent: {response}")
             except Exception as e:
-                print(f"错误: {e}")
+                print(f"Error: {e}")
 
 
 if __name__ == "__main__":

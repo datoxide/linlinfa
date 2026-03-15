@@ -176,14 +176,14 @@ class LegalContentGenerator:
 
 
 if __name__ == "__main__":
-    # 测试
+    # Test
     generator = LegalContentGenerator()
 
-    print("=== 测试生成法律科普文章 ===")
+    print("=== Testing legal article generation ===")
     result = generator.generate_popular_article("劳动合同法试用期规定")
     print(result)
     print("\n" + "=" * 50 + "\n")
 
-    print("=== 测试生成 FAQ ===")
+    print("=== Testing FAQ generation ===")
     result = generator.generate_faq("签订劳动合同需要注意什么？")
     print(result)

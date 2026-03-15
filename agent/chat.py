@@ -71,18 +71,18 @@ class LegalChatAgent:
 
     def run(self):
         """运行交互式对话"""
-        print("法律问答智能体已启动，输入 'quit' 退出，输入 'reset' 重置对话")
+        print("Legal Q&A Agent started, type 'quit' to exit, 'reset' to reset")
         print("-" * 50)
 
         while True:
-            user_input = input("\n你: ").strip()
+            user_input = input("\nYou: ").strip()
             if user_input.lower() in ["quit", "exit", "q"]:
-                print("再见！")
+                print("Goodbye!")
                 break
 
             if user_input.lower() in ["reset", "r"]:
                 self.reset_conversation()
-                print("对话已重置")
+                print("Conversation reset")
                 continue
 
             if not user_input:
@@ -90,9 +90,9 @@ class LegalChatAgent:
 
             try:
                 response = self.chat(user_input)
-                print(f"\n智能体: {response}")
+                print(f"\nAgent: {response}")
             except Exception as e:
-                print(f"错误: {e}")
+                print(f"Error: {e}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 """命令行入口"""
-
+import sys
 import argparse
 from agent import LegalChatAgent, LegalContentGenerator, LegalDocumentAnalyzer
 from agent.generator import ContentType
@@ -8,19 +8,19 @@ from agent.generator import ContentType
 def cmd_chat(args):
     """法律问答命令"""
     agent = LegalChatAgent(prompt_type=args.prompt_type)
-    print(f"法律问答智能体已启动 (提示词类型: {args.prompt_type})")
-    print("输入 'quit' 退出，输入 'reset' 重置对话")
+    print(f"Legal Q&A Agent started (prompt type: {args.prompt_type})")
+    print("Type 'quit' to exit, 'reset' to reset conversation")
     print("-" * 50)
 
     while True:
         user_input = input("\n你: ").strip()
         if user_input.lower() in ["quit", "exit", "q"]:
-            print("再见！")
+            print("Goodbye!")
             break
 
         if user_input.lower() in ["reset", "r"]:
             agent.reset_conversation()
-            print("对话已重置")
+            print("Conversation reset")
             continue
 
         if not user_input:
@@ -28,9 +28,9 @@ def cmd_chat(args):
 
         try:
             response = agent.chat(user_input)
-            print(f"\n智能体: {response}")
+            print(f"\nAgent: {response}")
         except Exception as e:
-            print(f"错误: {e}")
+            print(f"Error: {e}")
 
 
 def cmd_generate(args):
@@ -50,7 +50,7 @@ def cmd_generate(args):
     # 确定长度
     length = args.length or "medium"
 
-    print(f"正在生成 {args.type} 类型内容，主题: {args.topic}...")
+    print(f"Generating {args.type} content, topic: {args.topic}...")
     print("-" * 50)
 
     try:
@@ -62,7 +62,7 @@ def cmd_generate(args):
         )
         print(result)
     except Exception as e:
-        print(f"生成失败: {e}")
+        print(f"Generation failed: {e}")
         sys.exit(1)
 
 
@@ -73,8 +73,8 @@ def cmd_analyze(args):
     # 确定分析类型
     analysis_type = args.analysis_type
 
-    print(f"正在分析文档: {args.file_path}")
-    print(f"分析类型: {analysis_type}")
+    print(f"Analyzing document: {args.file_path}")
+    print(f"Analysis type: {analysis_type}")
     print("-" * 50)
 
     try:
@@ -91,7 +91,7 @@ def cmd_analyze(args):
 
         print(result)
     except Exception as e:
-        print(f"分析失败: {e}")
+        print(f"Analysis failed: {e}")
         sys.exit(1)
 
 

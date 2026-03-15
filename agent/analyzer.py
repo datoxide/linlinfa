@@ -195,7 +195,7 @@ class LegalDocumentAnalyzer:
 
 
 if __name__ == "__main__":
-    # 测试
+    # Test
     analyzer = LegalDocumentAnalyzer()
-    print("法律文档分析智能体已准备好使用")
-    print("使用 analyzer.analyze('document.pdf', 'summary') 进行分析")
+    print("Legal Document Analyzer is ready")
+    print("Use analyzer.analyze('document.pdf', 'summary') to analyze")
