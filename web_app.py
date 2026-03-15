@@ -2,13 +2,11 @@
 法律智能助手 Web 应用
 基于 Streamlit 的法律问答、内容生成和文档分析平台
 """
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+import os
+os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 import streamlit as st
 import tempfile
-import os
 from typing import Optional
 
 # 导入 agent 模块
