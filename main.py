@@ -1,6 +1,11 @@
 """法律传播智能体 - 主程序"""
 
 import os
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import httpx
 from config import Config, get_llm_config
 

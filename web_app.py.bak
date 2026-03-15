@@ -1,43 +1,9 @@
-import sys
-import os
-import io
-import codecs
-import locale
-import traceback
-
-# 强制设置 UTF-8 编码，优先使用 io.TextIOWrapper 替代 reconfigure
-try:
-    stdout_buffer = getattr(sys.stdout, 'buffer', None)
-    if stdout_buffer is not None:
-        sys.stdout = io.TextIOWrapper(stdout_buffer, encoding='utf-8', errors='replace')
-    else:
-        sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
-except (AttributeError, io.UnsupportedOperation, TypeError):
-    try:
-        sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
-    except Exception:
-        pass
-
-try:
-    stderr_buffer = getattr(sys.stderr, 'buffer', None)
-    if stderr_buffer is not None:
-        sys.stderr = io.TextIOWrapper(stderr_buffer, encoding='utf-8', errors='replace')
-    else:
-        sys.stderr = codecs.getwriter('utf-8')(sys.stderr)
-except (AttributeError, io.UnsupportedOperation, TypeError):
-    try:
-        sys.stderr = codecs.getwriter('utf-8')(sys.stderr)
-    except Exception:
-        pass
-
-os.environ['PYTHONIOENCODING'] = 'utf-8'
-os.environ['LC_ALL'] = 'C.UTF-8'
-os.environ['LANG'] = 'C.UTF-8'
-
 """
 法律智能助手 Web 应用
 基于 Streamlit 的法律问答、内容生成和文档分析平台
 """
+import os
+os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 import streamlit as st
 import tempfile
@@ -526,12 +492,10 @@ def render_chat_page():
                     "content": response
                 })
             except Exception as e:
-                st.error(f"发生错误: {repr(e)}")
-                with st.expander("查看详细错误信息"):
-                    st.code(traceback.format_exc(), language=None)
+                st.error(f"发生错误: {str(e)}")
                 st.session_state.chat_history.append({
                     "role": "assistant",
-                    "content": f"抱歉，发生了一些问题: {repr(e)}"
+                    "content": f"抱歉，发生了一些问题: {str(e)}"
                 })
 
         st.rerun()
@@ -628,9 +592,7 @@ def render_generator_page():
                 )
                 st.session_state.generated_content = result
             except Exception as e:
-                st.error(f"生成失败: {repr(e)}")
-                with st.expander("查看详细错误信息"):
-                    st.code(traceback.format_exc(), language=None)
+                st.error(f"生成失败: {str(e)}")
 
     # 显示生成结果
     if st.session_state.generated_content:
@@ -733,9 +695,7 @@ def render_analyzer_page():
                     result = analyzer.analyze(tmp_path, analysis_type=analysis_type)
                     st.session_state.analysis_result = result
                 except Exception as e:
-                    st.error(f"分析失败: {repr(e)}")
-                    with st.expander("查看详细错误信息"):
-                        st.code(traceback.format_exc(), language=None)
+                    st.error(f"分析失败: {str(e)}")
                 finally:
                     # 清理临时文件
                     if os.path.exists(tmp_path):

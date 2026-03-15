@@ -1,4 +1,22 @@
 """法律问答对话智能体"""
+import sys
+import io
+import os
+
+# 强制设置 UTF-8 编码，防止 ASCII 编码错误
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+if sys.stderr.encoding != 'utf-8':
+    try:
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+
 from .base import create_llm_client
 
 

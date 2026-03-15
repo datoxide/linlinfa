@@ -1,4 +1,24 @@
 """LLM 客户端基类"""
+import sys
+import io
+import os
+
+# 强制设置 UTF-8 编码，防止 ASCII 编码错误
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+if sys.stderr.encoding != 'utf-8':
+    try:
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+os.environ['LC_ALL'] = 'C.UTF-8'
+os.environ['LANG'] = 'C.UTF-8'
+
 from abc import ABC, abstractmethod
 from openai import OpenAI
 import httpx
@@ -30,7 +50,7 @@ class OpenRouterClient(LLMClient):
             base_url=self.base_url,
             default_headers={
                 "HTTP-Referer": "https://gengxis-project.streamlit.app",
-                "X-Title": "邻临法法律智能助手"
+                "X-Title": "Linlinfa Legal Assistant"
             }
         )
 

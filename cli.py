@@ -1,4 +1,10 @@
 """命令行入口"""
+import os
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import sys
 import argparse
 from agent import LegalChatAgent, LegalContentGenerator, LegalDocumentAnalyzer
