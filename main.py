@@ -1,4 +1,8 @@
 """法律传播智能体 - 主程序"""
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import os
 import httpx
 from config import Config, get_llm_config

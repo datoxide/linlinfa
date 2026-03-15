@@ -1,6 +1,9 @@
 """命令行入口"""
-import argparse
 import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+import argparse
 from agent import LegalChatAgent, LegalContentGenerator, LegalDocumentAnalyzer
 from agent.generator import ContentType
 
