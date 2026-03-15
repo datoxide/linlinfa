@@ -1,5 +1,9 @@
+# API密钥文件 - 绝对不上传
+.streamlit/secrets.toml
+.env
+
+# 其他不需要的文件
 __pycache__/
 *.pyc
-.env
 .DS_Store
 venv/
