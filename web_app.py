@@ -1,39 +1,5 @@
 import sys
 import os
-import io
-import codecs
-import locale
-import traceback
-
-# 强制设置 UTF-8 编码，优先使用 io.TextIOWrapper 替代 reconfigure
-try:
-    stdout_buffer = getattr(sys.stdout, 'buffer', None)
-    if stdout_buffer is not None:
-        sys.stdout = io.TextIOWrapper(stdout_buffer, encoding='utf-8', errors='replace')
-    else:
-        sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
-except (AttributeError, io.UnsupportedOperation, TypeError):
-    try:
-        sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
-    except Exception:
-        pass
-
-try:
-    stderr_buffer = getattr(sys.stderr, 'buffer', None)
-    if stderr_buffer is not None:
-        sys.stderr = io.TextIOWrapper(stderr_buffer, encoding='utf-8', errors='replace')
-    else:
-        sys.stderr = codecs.getwriter('utf-8')(sys.stderr)
-except (AttributeError, io.UnsupportedOperation, TypeError):
-    try:
-        sys.stderr = codecs.getwriter('utf-8')(sys.stderr)
-    except Exception:
-        pass
-
-os.environ['PYTHONIOENCODING'] = 'utf-8'
-os.environ['LC_ALL'] = 'C.UTF-8'
-os.environ['LANG'] = 'C.UTF-8'
-
 """
 法律智能助手 Web 应用
 基于 Streamlit 的法律问答、内容生成和文档分析平台
