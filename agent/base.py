@@ -1,10 +1,4 @@
 """LLM 客户端基类"""
-    except Exception:
-        pass
-
-os.environ['PYTHONIOENCODING'] = 'utf-8'
-os.environ['LC_ALL'] = 'C.UTF-8'
-os.environ['LANG'] = 'C.UTF-8'
 
 from abc import ABC, abstractmethod
 from openai import OpenAI

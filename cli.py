@@ -1,6 +1,5 @@
 """命令行入口"""
 import os
-os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 from dotenv import load_dotenv
 load_dotenv()
