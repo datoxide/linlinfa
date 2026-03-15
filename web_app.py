@@ -1,3 +1,13 @@
+import sys, os, locale
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+os.environ['LC_ALL'] = 'C.UTF-8'
+os.environ['LANG'] = 'C.UTF-8'
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+except:
+    pass
+
 """
 法律智能助手 Web 应用
 基于 Streamlit 的法律问答、内容生成和文档分析平台
