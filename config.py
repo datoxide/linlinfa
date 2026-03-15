@@ -1,8 +1,4 @@
 """项目配置"""
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 import os
 from dotenv import load_dotenv
 

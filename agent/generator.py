@@ -1,8 +1,4 @@
 """法律内容生成智能体"""
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 from enum import Enum
 from typing import Optional
 from .base import create_llm_client

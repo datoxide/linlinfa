@@ -1,8 +1,4 @@
 """LLM 客户端基类"""
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 from abc import ABC, abstractmethod
 from openai import OpenAI
 import httpx

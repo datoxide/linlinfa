@@ -1,8 +1,4 @@
 """法律问答对话智能体"""
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 from .base import create_llm_client
 
 

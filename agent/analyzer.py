@@ -1,8 +1,4 @@
 """法律文档分析智能体"""
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 import os
 from abc import ABC, abstractmethod
 from typing import Optional
